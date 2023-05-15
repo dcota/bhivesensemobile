@@ -357,29 +357,6 @@ class _HivesListState extends State<HivesList> {
                         ]),
                   ),
           )),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.green,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white70,
-            iconSize: 40,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.house_siding_sharp),
-                label: 'Apiaries',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.document_scanner_sharp),
-                label: 'Report',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.logout_sharp),
-                label: 'Logout',
-              ),
-            ],
-          ),
           floatingActionButton: buildAddOfferButton(context)));
 }
 
@@ -387,8 +364,9 @@ Widget buildAddOfferButton(BuildContext context) => FloatingActionButton(
     backgroundColor: const Color.fromARGB(166, 66, 66, 66),
     onPressed: () {
       Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => ApiaryList()),
-      );
+          context,
+          MaterialPageRoute(
+            builder: (context) => Menu(),
+          ));
     },
     child: const Icon(Icons.arrow_back));

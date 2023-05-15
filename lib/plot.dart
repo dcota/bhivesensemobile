@@ -20,7 +20,6 @@ class Plot extends StatefulWidget {
 class _PlotState extends State<Plot> {
   bool showProgress = true;
   final userdata = GetStorage();
-  static const c = Color(0xffebc002);
   var _data = {};
   var render = true;
   var ti;
@@ -95,23 +94,33 @@ class _PlotState extends State<Plot> {
     );
   }
 
-  Future<Map> getHiveData() async {
-    var data = {};
+  Future<List> getDayData() async {
+    var data;
+    final List<FlSpot> dummyData1;
+    print(userdata.read('hiveIDtoget'));
     try {
       Response response = await get(Uri.parse(
-          'https://bhsapi.duartecota.com/device/latest/${userdata.read('hiveIDtoget')}/${userdata.read('apiaryIDtoget')}'));
+          'https://bhsapi.duartecota.com/device/day/${userdata.read('hiveIDtoget')}'));
       Map d = jsonDecode(response.body);
-      if (d['body'].length == 0) {
+      var arr = [];
+      if (d['body']['data'].length == 0) {
         render = false;
         showNoData();
+      } else {
+        for (var i = 0; i < d['body']['data'].length; i++) {
+          var ti = d['body']['data'][i]['ti'];
+          arr.add(ti);
+        }
       }
-      ti = d['body']['data']['ti'];
+
+      data = arr;
+      /*ti = d['body']['data']['ti'];
       to = d['body']['data']['to'];
       hi = d['body']['data']['hi'];
       ho = d['body']['data']['ho'];
       s = d['body']['data']['s'];
-      w = d['body']['data']['w'];
-      var date = d['body']['data']['date'];
+      w = d['body']['data']['w'];*/
+      /*var date = d['body']['data']['date'];
       var dateParsed = DateTime.parse(date);
       final localTime = dateParsed.toLocal();
       late final year;
@@ -133,8 +142,8 @@ class _PlotState extends State<Plot> {
       localTime.hour < 10
           ? minutes = '0' + localTime.minute.toString()
           : minutes = localTime.minute;
-      _time = '$hours:$minutes';
-      data = d;
+      _time = '$hours:$minutes';*/
+      //data = d;
     } catch (e) {
       print(e);
     }
@@ -163,14 +172,14 @@ class _PlotState extends State<Plot> {
   @override
   void initState() {
     toggleSubmitState();
-    /*getHiveData().then(
+    getDayData().then(
       (value) {
         setState(() {
           toggleSubmitState();
-          _data = value;
+          print(value);
         });
       },
-    );*/
+    );
     super.initState();
   }
 
@@ -247,7 +256,7 @@ class _PlotState extends State<Plot> {
                                       color: Colors.red,
                                     ),
                                     // The orange line
-                                    LineChartBarData(
+                                    /*LineChartBarData(
                                       spots: dummyData2,
                                       isCurved: true,
                                       barWidth: 2,
@@ -259,7 +268,7 @@ class _PlotState extends State<Plot> {
                                       isCurved: false,
                                       barWidth: 2,
                                       color: Colors.blue,
-                                    )
+                                    )*/
                                   ],
                                 ),
                               ),

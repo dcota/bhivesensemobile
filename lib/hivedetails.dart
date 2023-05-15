@@ -1,12 +1,15 @@
 // ignore_for_file: unnecessary_const, avoid_print, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings
 
 import 'dart:convert';
+import 'package:bhivesensemobile/dashboard.dart';
 import 'package:bhivesensemobile/hives.dart';
-import 'package:bhivesensemobile/menu.dart';
+import 'package:bhivesensemobile/apiaries.dart';
 import 'package:bhivesensemobile/plot.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:http/http.dart';
+
+import 'menu.dart';
 
 class HiveDetails extends StatefulWidget {
   const HiveDetails({super.key});
@@ -29,6 +32,7 @@ class _HiveDetailState extends State<HiveDetails> {
   var w;
   var _date;
   var _time;
+
   void toggleSubmitState() {
     setState(() {
       showProgress = !showProgress;
@@ -51,30 +55,6 @@ class _HiveDetailState extends State<HiveDetails> {
         content: SingleChildScrollView(
           child: ListBody(children: const <Widget>[
             const Text('No data for this hive!'),
-          ]),
-        ),
-        actions: <Widget>[
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => const HivesList(),
-              ));
-            },
-            child: const Text('OK'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void showNoHives() {
-    showDialog<String>(
-      context: context,
-      builder: (BuildContext context) => AlertDialog(
-        title: const Text('WARNING'),
-        content: SingleChildScrollView(
-          child: ListBody(children: const <Widget>[
-            const Text('No Hives in this apiary!'),
           ]),
         ),
         actions: <Widget>[
@@ -170,6 +150,11 @@ class _HiveDetailState extends State<HiveDetails> {
     super.initState();
   }
 
+  int currentIndex = 0;
+  final screens = [
+    const Dashboard(),
+    const ApiaryList(),
+  ];
   @override
   Widget build(BuildContext context) => WillPopScope(
       onWillPop: () => _onWillPop(context),
@@ -415,6 +400,33 @@ class _HiveDetailState extends State<HiveDetails> {
                               ],
                             )
                           : null)),
+          bottomNavigationBar: BottomNavigationBar(
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.green,
+            selectedItemColor: Colors.white,
+            unselectedItemColor: Colors.white70,
+            iconSize: 40,
+            currentIndex: currentIndex,
+            onTap: (index) => setState(() => currentIndex = index),
+            items: const [
+              BottomNavigationBarItem(
+                icon: Icon(Icons.space_dashboard),
+                label: 'Dashboard',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.house_siding_sharp),
+                label: 'Apiaries',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.document_scanner_sharp),
+                label: 'Report',
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.logout_sharp),
+                label: 'Logout',
+              ),
+            ],
+          ),
           floatingActionButton: buildAddOfferButton(context)));
 }
 
@@ -423,7 +435,7 @@ Widget buildAddOfferButton(BuildContext context) => FloatingActionButton(
     onPressed: () {
       Navigator.push(
         context,
-        MaterialPageRoute(builder: (context) => const HivesList()),
+        MaterialPageRoute(builder: (context) => Menu()),
       );
     },
     child: const Icon(Icons.arrow_back));

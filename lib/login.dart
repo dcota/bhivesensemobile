@@ -1,6 +1,8 @@
 // ignore_for_file: avoid_print, use_build_context_synchronously
 
 import 'dart:convert';
+import 'package:bhivesensemobile/dashboard.dart';
+import 'package:bhivesensemobile/menu.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -49,14 +51,15 @@ class _LoginPageState extends State<LoginPage> {
         userdata.write('type', b['body']['type']);
         userdata.write('firstname', b['body']['firstname']);
         userdata.write('_id', b['body']['_id']);
-        userdata.write('username', b['body']['username']);
+        userdata.write('name', b['body']['name']);
+        userdata.write('email', b['body']['email']);
         type = userdata.read('type');
         toggleSubmitState();
         /*Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const ApiaryList(),
         ));*/
         Navigator.of(context).pushReplacement(MaterialPageRoute(
-          builder: (context) => ApiaryList(),
+          builder: (context) => Menu(),
         ));
       } else {
         toggleSubmitState();
@@ -186,8 +189,12 @@ class _LoginPageState extends State<LoginPage> {
                                   MaterialStateProperty.all<Color>(Colors.grey),
                             ),
                             child: !showProgress
-                                ? const CircularProgressIndicator(
-                                    color: Color.fromARGB(255, 255, 255, 255),
+                                ? const SizedBox(
+                                    height: 20,
+                                    width: 20,
+                                    child: CircularProgressIndicator(
+                                      color: Color.fromARGB(255, 255, 255, 255),
+                                    ),
                                   )
                                 : const Text(
                                     'Sign in',
