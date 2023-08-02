@@ -41,13 +41,13 @@
         <meta-data
             android:name="com.onesignal.NotificationAccentColor.DEFAULT"
             android:value="FFFFFF" />
-        <receiver
+        <!--<receiver
             android:name="com.dexterous.flutterlocalnotifications.ScheduledNotificationBootReceiver">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
                 <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
     </application>
 </manifest>

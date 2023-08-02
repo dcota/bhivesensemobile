@@ -4,7 +4,7 @@ import 'dart:convert';
 import 'package:bhivesensemobile/hives.dart';
 import 'package:bhivesensemobile/apiaries.dart';
 import 'package:bhivesensemobile/logout.dart';
-import 'package:bhivesensemobile/plot.dart';
+//import 'package:bhivesensemobile/plot.dart';
 import 'package:bhivesensemobile/report.dart';
 import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
@@ -32,8 +32,8 @@ class _DashboardState extends State<Dashboard> {
   var ho;
   var s;
   var w;
-  var _date;
-  var _time;
+  //var _date;
+  //var _time;
   void toggleSubmitState() {
     setState(() {
       showProgress = !showProgress;

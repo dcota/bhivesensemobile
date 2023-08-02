@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:get_storage/get_storage.dart';
 import 'app_widget.dart';
 import 'package:flutter/services.dart';
-import 'services/notification_service.dart';
+//import 'services/notification_service.dart';
 
 Future main() async {
   await GetStorage.init();
-  NotificationService().initNotification();
+  //NotificationService().initNotification();
   WidgetsFlutterBinding.ensureInitialized();
 
   SystemChrome.setPreferredOrientations(

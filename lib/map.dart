@@ -2,12 +2,12 @@
 
 import 'dart:async';
 import 'package:bhivesensemobile/hives.dart';
-import 'package:http/http.dart';
-import 'dart:convert';
+//import 'package:http/http.dart';
+//import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:get_storage/get_storage.dart';
-import 'package:bhivesensemobile/hivedetails.dart';
+//import 'package:bhivesensemobile/hivedetails.dart';
 
 class MapPage extends StatefulWidget {
   const MapPage({super.key});

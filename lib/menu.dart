@@ -27,12 +27,12 @@ class _MenuState extends State<Menu> {
     return exitResult ?? false;
   }
 
-  Future<bool?> _showExitDialog(BuildContext context) async {
+  /*Future<bool?> _showExitDialog(BuildContext context) async {
     return await showDialog(
       context: context,
       builder: (context) => _buildExitDialog(context),
     );
-  }
+  }*/
 
   AlertDialog _buildExitDialog(BuildContext context) {
     return AlertDialog(

@@ -1,4 +1,4 @@
-// ignore_for_file: unnecessary_const, avoid_print, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings
+// ignore_for_file: unnecessary_const, avoid_print, prefer_typing_uninitialized_variables, prefer_interpolation_to_compose_strings, unused_local_variable, unused_field, prefer_final_fields
 
 import 'dart:convert';
 import 'package:bhivesensemobile/hives.dart';
