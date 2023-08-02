@@ -10,7 +10,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get_storage/get_storage.dart';
 import 'package:bhivesensemobile/apiaries.dart';
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badge;
 import 'package:http/http.dart';
 
 class Menu extends StatefulWidget {
@@ -144,7 +144,7 @@ class _MenuState extends State<Menu> {
             items: <BottomNavigationBarItem>[
               BottomNavigationBarItem(
                 icon: render
-                    ? Badge(
+                    ? badge.Badge(
                         badgeContent: Text(
                           _nevents.toString(),
                           style: TextStyle(color: Colors.white),

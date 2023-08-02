@@ -51,9 +51,9 @@ class _PlotState extends State<Plot> {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         title: const Text('WARNING'),
-        content: SingleChildScrollView(
-          child: ListBody(children: const <Widget>[
-            const Text('No data for this hive!'),
+        content: const SingleChildScrollView(
+          child: ListBody(children: <Widget>[
+            Text('No data for this hive!'),
           ]),
         ),
         actions: <Widget>[
@@ -75,9 +75,9 @@ class _PlotState extends State<Plot> {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         title: const Text('WARNING'),
-        content: SingleChildScrollView(
-          child: ListBody(children: const <Widget>[
-            const Text('No Hives in this apiary!'),
+        content: const SingleChildScrollView(
+          child: ListBody(children: <Widget>[
+            Text('No Hives in this apiary!'),
           ]),
         ),
         actions: <Widget>[

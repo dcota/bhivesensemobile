@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\duart\\OneDrive - PGA\\Ambiente de Trabalho\\bhivesensemobile_main\\bhivesensemobile\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
+            "outputFile": "C:\\Users\\duart\\Desktop\\bhivesensemobile\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values\\values.xml",
             "map": [
                 {
                     "source": "C:\\Users\\duart\\.gradle\\caches\\transforms-3\\71a7f5b365fdc57e5d7d1ff07dfc554b\\transformed\\jetified-OneSignal-4.8.5\\res\\values\\values.xml",
@@ -186,7 +186,7 @@
                     }
                 },
                 {
-                    "source": "C:\\Users\\duart\\OneDrive - PGA\\Ambiente de Trabalho\\bhivesensemobile_main\\bhivesensemobile\\android\\app\\src\\main\\res\\values\\styles.xml",
+                    "source": "C:\\Users\\duart\\Desktop\\bhivesensemobile\\android\\app\\src\\main\\res\\values\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

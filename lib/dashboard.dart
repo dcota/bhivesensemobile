@@ -447,7 +447,7 @@ class _DashboardState extends State<Dashboard> {
                                       color: const Color.fromARGB(
                                           255, 226, 233, 226),
                                     ),
-                                    child: Column(
+                                    child: const Column(
                                       mainAxisAlignment:
                                           MainAxisAlignment.center,
                                       children: const <Widget>[

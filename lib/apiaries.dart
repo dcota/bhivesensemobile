@@ -233,6 +233,10 @@ class _ApiaryListState extends State<ApiaryList> {
                                                         label: const Text(
                                                             'Details'),
                                                         style: ElevatedButton.styleFrom(
+                                                            foregroundColor:
+                                                                Colors.white,
+                                                            backgroundColor:
+                                                                Colors.green,
                                                             elevation: 5,
                                                             minimumSize:
                                                                 const Size(
@@ -241,11 +245,7 @@ class _ApiaryListState extends State<ApiaryList> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                            10.0)),
-                                                            onPrimary:
-                                                                Colors.white,
-                                                            primary:
-                                                                Colors.green),
+                                                                            10.0))),
                                                       ),
                                                       ElevatedButton.icon(
                                                         onPressed: () => {
@@ -277,6 +277,14 @@ class _ApiaryListState extends State<ApiaryList> {
                                                         label:
                                                             const Text('Hives'),
                                                         style: ElevatedButton.styleFrom(
+                                                            foregroundColor:
+                                                                Colors.white,
+                                                            backgroundColor:
+                                                                const Color.fromARGB(
+                                                                    255,
+                                                                    9,
+                                                                    106,
+                                                                    197),
                                                             elevation: 5,
                                                             minimumSize:
                                                                 const Size(
@@ -285,15 +293,7 @@ class _ApiaryListState extends State<ApiaryList> {
                                                                 borderRadius:
                                                                     BorderRadius
                                                                         .circular(
-                                                                            10.0)),
-                                                            onPrimary:
-                                                                Colors.white,
-                                                            primary: const Color
-                                                                    .fromARGB(
-                                                                255,
-                                                                9,
-                                                                106,
-                                                                197)),
+                                                                            10.0))),
                                                       ),
                                                     ],
                                                   )

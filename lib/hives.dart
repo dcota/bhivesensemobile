@@ -41,7 +41,7 @@ class _HivesListState extends State<HivesList> {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         title: const Text('WARNING'),
-        content: SingleChildScrollView(
+        content: const SingleChildScrollView(
           child: ListBody(children: const <Widget>[
             const Text('No data for this hive!'),
           ]),
@@ -63,7 +63,7 @@ class _HivesListState extends State<HivesList> {
       context: context,
       builder: (BuildContext context) => AlertDialog(
         title: const Text('WARNING'),
-        content: SingleChildScrollView(
+        content: const SingleChildScrollView(
           child: ListBody(children: const <Widget>[
             const Text('No hives in this apiary!'),
           ]),
@@ -207,9 +207,8 @@ class _HivesListState extends State<HivesList> {
                                                                 .width -
                                                             50,
                                                         height: 30,
-                                                        child: Row(
-                                                          children: const <
-                                                              Widget>[
+                                                        child: const Row(
+                                                          children: const <Widget>[
                                                             const Expanded(
                                                                 child: Align(
                                                               alignment:
@@ -247,9 +246,8 @@ class _HivesListState extends State<HivesList> {
                                                                 .width -
                                                             50,
                                                         height: 30,
-                                                        child: Row(
-                                                          children: const <
-                                                              Widget>[
+                                                        child: const Row(
+                                                          children: const <Widget>[
                                                             const Expanded(
                                                                 child: Align(
                                                               alignment:
@@ -301,19 +299,20 @@ class _HivesListState extends State<HivesList> {
                                                   icon: const Icon(Icons.map),
                                                   label: const Text('Map'),
                                                   style: ElevatedButton.styleFrom(
+                                                      foregroundColor:
+                                                          Colors.white,
+                                                      backgroundColor:
+                                                          const Color.fromARGB(
+                                                              255, 9, 150, 27),
                                                       elevation: 5,
-                                                      minimumSize: const Size(
-                                                          100, 35),
+                                                      minimumSize:
+                                                          const Size(100, 35),
                                                       shape:
                                                           RoundedRectangleBorder(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          10.0)),
-                                                      onPrimary: Colors.white,
-                                                      primary:
-                                                          const Color.fromARGB(
-                                                              255, 9, 150, 27)),
+                                                                          10.0))),
                                                 ),
                                                 ElevatedButton.icon(
                                                   onPressed: () => {
@@ -331,22 +330,20 @@ class _HivesListState extends State<HivesList> {
                                                       Icons.line_axis),
                                                   label: const Text('Data'),
                                                   style: ElevatedButton.styleFrom(
+                                                      foregroundColor:
+                                                          Colors.white,
+                                                      backgroundColor:
+                                                          const Color.fromARGB(
+                                                              255, 9, 106, 197),
                                                       elevation: 5,
-                                                      minimumSize: const Size(
-                                                          100, 35),
+                                                      minimumSize:
+                                                          const Size(100, 35),
                                                       shape:
                                                           RoundedRectangleBorder(
                                                               borderRadius:
                                                                   BorderRadius
                                                                       .circular(
-                                                                          10.0)),
-                                                      onPrimary: Colors.white,
-                                                      primary:
-                                                          const Color.fromARGB(
-                                                              255,
-                                                              9,
-                                                              106,
-                                                              197)),
+                                                                          10.0))),
                                                 ),
                                               ],
                                             )
