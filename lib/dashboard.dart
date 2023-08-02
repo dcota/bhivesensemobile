@@ -227,50 +227,48 @@ class _DashboardState extends State<Dashboard> {
                                         crossAxisSpacing: 20),
                                 padding: const EdgeInsets.all(30.0),
                                 children: <Widget>[
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.of(context)
-                                          .pushReplacement(MaterialPageRoute(
-                                        builder: (context) => const Plot(),
-                                      ));
-                                    },
-                                    child: Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        color: const Color.fromARGB(
-                                            255, 226, 233, 226),
-                                      ),
-                                      child: Column(
-                                        mainAxisAlignment:
-                                            MainAxisAlignment.center,
-                                        children: <Widget>[
-                                          _nevents > 0
-                                              ? const Icon(
-                                                  Icons.warning_rounded,
-                                                  size: 60,
-                                                  color: Colors.red,
-                                                )
-                                              : const Icon(Icons.check_circle,
-                                                  size: 60,
-                                                  color: Colors.green),
-                                          _nevents > 0
-                                              ? const Text(
-                                                  'Active events',
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14,
-                                                      color: Colors.red),
-                                                )
-                                              : const Text(
-                                                  'No active events',
-                                                  style: const TextStyle(
-                                                      fontWeight:
-                                                          FontWeight.bold,
-                                                      fontSize: 14,
-                                                      color: Colors.green),
-                                                ),
-                                          /*_nevents > 0
+                                  //InkWell(
+                                  //onTap: () {
+                                  //Navigator.of(context)
+                                  //.pushReplacement(MaterialPageRoute(
+                                  //builder: (context) => const Plot(),
+                                  //));
+                                  //},
+                                  //child:
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: const Color.fromARGB(
+                                          255, 226, 233, 226),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.center,
+                                      children: <Widget>[
+                                        _nevents > 0
+                                            ? const Icon(
+                                                Icons.warning_rounded,
+                                                size: 60,
+                                                color: Colors.red,
+                                              )
+                                            : const Icon(Icons.check_circle,
+                                                size: 60, color: Colors.green),
+                                        _nevents > 0
+                                            ? const Text(
+                                                'Active events',
+                                                style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14,
+                                                    color: Colors.red),
+                                              )
+                                            : const Text(
+                                                'No active events',
+                                                style: const TextStyle(
+                                                    fontWeight: FontWeight.bold,
+                                                    fontSize: 14,
+                                                    color: Colors.green),
+                                              ),
+                                        /*_nevents > 0
                                               ? Text(
                                                   '$_nevents',
                                                   style: const TextStyle(
@@ -287,10 +285,10 @@ class _DashboardState extends State<Dashboard> {
                                                       fontSize: 25,
                                                       color: Colors.green),
                                                 )*/
-                                        ],
-                                      ),
+                                      ],
                                     ),
                                   ),
+                                  //),
                                   Container(
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20),

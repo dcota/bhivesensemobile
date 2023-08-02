@@ -145,13 +145,12 @@ class _HivesListState extends State<HivesList> {
       child: Scaffold(
           backgroundColor: c,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.green,
             leading: Container(),
             automaticallyImplyLeading: false,
             title: Text(
               'Hi, ${userdata.read('firstname')}!',
-              style: const TextStyle(
-                  color: Color.fromARGB(166, 66, 66, 66), fontSize: 25),
+              style: const TextStyle(color: Colors.white70, fontSize: 30),
             ),
             centerTitle: true,
           ),

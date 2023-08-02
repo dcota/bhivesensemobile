@@ -149,7 +149,7 @@ class _MenuState extends State<Menu> {
                           _nevents.toString(),
                           style: TextStyle(color: Colors.white),
                         ),
-                        child: Icon(Icons.settings),
+                        child: Icon(Icons.dashboard_rounded),
                       )
                     : Icon(Icons.settings),
                 label: 'Dashboard',

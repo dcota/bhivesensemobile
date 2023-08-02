@@ -106,7 +106,7 @@ class _HiveDetailState extends State<HiveDetails> {
       localTime.hour < 10
           ? hours = '0' + localTime.hour.toString()
           : hours = localTime.hour;
-      localTime.hour < 10
+      localTime.minute < 10
           ? minutes = '0' + localTime.minute.toString()
           : minutes = localTime.minute;
       _time = '$hours:$minutes';
@@ -161,15 +161,12 @@ class _HiveDetailState extends State<HiveDetails> {
       child: Scaffold(
           backgroundColor: c,
           appBar: AppBar(
-            backgroundColor: Colors.white,
+            backgroundColor: Colors.green,
             leading: Container(),
             automaticallyImplyLeading: false,
             title: Text(
               'Hi, ${userdata.read('firstname')}!',
-              style: const TextStyle(
-                color: Color.fromARGB(166, 66, 66, 66),
-                fontSize: 25,
-              ),
+              style: const TextStyle(color: Colors.white70, fontSize: 30),
             ),
             centerTitle: true,
           ),
@@ -375,11 +372,11 @@ class _HiveDetailState extends State<HiveDetails> {
                                             MainAxisAlignment.center,
                                         children: <Widget>[
                                           const Icon(
-                                            Icons.music_note,
+                                            Icons.graphic_eq_rounded,
                                             size: 40,
                                           ),
                                           const Text(
-                                            'Sound level dB',
+                                            'Sound frequency Hz',
                                             style: const TextStyle(
                                               fontWeight: FontWeight.bold,
                                               fontSize: 14,
@@ -400,33 +397,6 @@ class _HiveDetailState extends State<HiveDetails> {
                               ],
                             )
                           : null)),
-          bottomNavigationBar: BottomNavigationBar(
-            type: BottomNavigationBarType.fixed,
-            backgroundColor: Colors.green,
-            selectedItemColor: Colors.white,
-            unselectedItemColor: Colors.white70,
-            iconSize: 40,
-            currentIndex: currentIndex,
-            onTap: (index) => setState(() => currentIndex = index),
-            items: const [
-              BottomNavigationBarItem(
-                icon: Icon(Icons.space_dashboard),
-                label: 'Dashboard',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.house_siding_sharp),
-                label: 'Apiaries',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.document_scanner_sharp),
-                label: 'Report',
-              ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.logout_sharp),
-                label: 'Logout',
-              ),
-            ],
-          ),
           floatingActionButton: buildAddOfferButton(context)));
 }
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'login.dart';
 import 'package:onesignal_flutter/onesignal_flutter.dart';
-import 'package:bhivesensemobile/services/notification_service.dart';
 
 void main() {
   runApp(const MyApp());

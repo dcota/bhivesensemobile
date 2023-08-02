@@ -22,7 +22,7 @@ class _ApiaryListState extends State<ApiaryList> {
   bool showProgress = false;
   final userdata = GetStorage();
   static const c = Color(0xffebc002);
-  final List<Apiary> _apiaryList = [];
+  late List<Apiary> _apiaryList = [];
   void toggleSubmitState() {
     setState(() {
       showProgress = !showProgress;
@@ -36,13 +36,6 @@ class _ApiaryListState extends State<ApiaryList> {
     );
     return exitResult ?? false;
   }
-
-  /*Future<bool?> _showExitDialog(BuildContext context) async {
-    return await showDialog(
-      context: context,
-      builder: (context) => _buildExitDialog(context),
-    );
-  }*/
 
   void showDetails(Apiary apiaryList) {
     showDialog<String>(
@@ -131,159 +124,186 @@ class _ApiaryListState extends State<ApiaryList> {
   Widget build(BuildContext context) => WillPopScope(
       onWillPop: () => _onWillPop(context),
       child: Scaffold(
-        backgroundColor: c,
-        /*appBar: AppBar(
-            backgroundColor: Colors.white,
-            leading: Container(),
-            automaticallyImplyLeading: false,
-            title: Text(
-              'Hi, ${userdata.read('firstname')}!',
-              style: const TextStyle(
-                  color: Color.fromARGB(166, 66, 66, 66), fontSize: 25),
-            ),
-            centerTitle: true,
-          ),*/
-        body: Center(
-            child: Padding(
-          padding: const EdgeInsets.all(2.0),
-          child: showProgress
-              ? const CircularProgressIndicator()
-              : SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: MediaQuery.of(context).size.height,
-                  child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: <Widget>[
-                        const SizedBox(
-                          height: 15.0,
+          backgroundColor: c,
+          body: Center(
+            child: RefreshIndicator(
+                onRefresh: () {
+                  toggleSubmitState();
+                  return getApiaries().then(
+                    (value) {
+                      setState(() {
+                        toggleSubmitState();
+                        _apiaryList = [];
+                        _apiaryList.addAll(value);
+                      });
+                    },
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.all(2.0),
+                  child: showProgress
+                      ? const CircularProgressIndicator()
+                      : SizedBox(
+                          width: MediaQuery.of(context).size.width,
+                          height: MediaQuery.of(context).size.height,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceAround,
+                              children: <Widget>[
+                                const SizedBox(
+                                  height: 15.0,
+                                ),
+                                Expanded(
+                                    child: ListView.builder(
+                                        padding: const EdgeInsets.only(
+                                            bottom: 80, left: 15, right: 15),
+                                        itemCount: _apiaryList.length,
+                                        itemBuilder: ((context, index) {
+                                          return Card(
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius:
+                                                    BorderRadius.circular(
+                                                        15.0)),
+                                            color: const Color.fromARGB(
+                                                255, 226, 233, 226),
+                                            elevation: 10,
+                                            child: Column(
+                                                mainAxisSize: MainAxisSize.min,
+                                                children: [
+                                                  ListTile(
+                                                    leading: Image(
+                                                        image: AssetImage(
+                                                            'assets/$bgImage'),
+                                                        fit: BoxFit.scaleDown,
+                                                        width: 100,
+                                                        alignment:
+                                                            Alignment.center),
+                                                    title: const Text(
+                                                      'Apiary',
+                                                      style: TextStyle(
+                                                          fontSize: 30),
+                                                    ),
+                                                    subtitle: Text(
+                                                      _apiaryList[index].id,
+                                                      style: const TextStyle(
+                                                          fontSize: 14.0),
+                                                    ),
+                                                  ),
+                                                  Center(
+                                                    child: Container(
+                                                      margin:
+                                                          const EdgeInsets.all(
+                                                              5.0),
+                                                      color:
+                                                          const Color.fromARGB(
+                                                              255,
+                                                              226,
+                                                              233,
+                                                              226),
+                                                      width:
+                                                          MediaQuery.of(context)
+                                                                  .size
+                                                                  .width -
+                                                              50,
+                                                      height: 18,
+                                                      child: Text(
+                                                        "Location: ${_apiaryList[index].location}",
+                                                        textAlign:
+                                                            TextAlign.center,
+                                                        overflow: TextOverflow
+                                                            .ellipsis,
+                                                        style: const TextStyle(
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            fontSize: 16),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  ButtonBar(
+                                                    alignment: MainAxisAlignment
+                                                        .center,
+                                                    children: <Widget>[
+                                                      ElevatedButton.icon(
+                                                        onPressed: () => {
+                                                          showDetails(
+                                                              _apiaryList[
+                                                                  index])
+                                                        },
+                                                        icon: const Icon(
+                                                            Icons.zoom_in),
+                                                        label: const Text(
+                                                            'Details'),
+                                                        style: ElevatedButton.styleFrom(
+                                                            elevation: 5,
+                                                            minimumSize:
+                                                                const Size(
+                                                                    100, 35),
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10.0)),
+                                                            onPrimary:
+                                                                Colors.white,
+                                                            primary:
+                                                                Colors.green),
+                                                      ),
+                                                      ElevatedButton.icon(
+                                                        onPressed: () => {
+                                                          userdata.write(
+                                                              'apiaryIDtoget',
+                                                              _apiaryList[index]
+                                                                  .id),
+                                                          userdata.write(
+                                                              'address',
+                                                              _apiaryList[index]
+                                                                  .address),
+                                                          userdata.write(
+                                                              'location',
+                                                              _apiaryList[index]
+                                                                  .location),
+                                                          userdata.write(
+                                                              'observations',
+                                                              _apiaryList[index]
+                                                                  .observations),
+                                                          Navigator.of(context)
+                                                              .pushReplacement(
+                                                                  MaterialPageRoute(
+                                                            builder: (context) =>
+                                                                const HivesList(),
+                                                          )),
+                                                        },
+                                                        icon: const Icon(
+                                                            Icons.zoom_in),
+                                                        label:
+                                                            const Text('Hives'),
+                                                        style: ElevatedButton.styleFrom(
+                                                            elevation: 5,
+                                                            minimumSize:
+                                                                const Size(
+                                                                    100, 35),
+                                                            shape: RoundedRectangleBorder(
+                                                                borderRadius:
+                                                                    BorderRadius
+                                                                        .circular(
+                                                                            10.0)),
+                                                            onPrimary:
+                                                                Colors.white,
+                                                            primary: const Color
+                                                                    .fromARGB(
+                                                                255,
+                                                                9,
+                                                                106,
+                                                                197)),
+                                                      ),
+                                                    ],
+                                                  )
+                                                ]),
+                                          );
+                                        }))),
+                              ]),
                         ),
-                        Expanded(
-                            child: ListView.builder(
-                                padding: const EdgeInsets.only(
-                                    bottom: 80, left: 15, right: 15),
-                                itemCount: _apiaryList.length,
-                                itemBuilder: ((context, index) {
-                                  return Card(
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0)),
-                                    color: const Color.fromARGB(
-                                        255, 226, 233, 226),
-                                    elevation: 10,
-                                    child: Column(
-                                        mainAxisSize: MainAxisSize.min,
-                                        children: [
-                                          ListTile(
-                                            leading: Image(
-                                                image: AssetImage(
-                                                    'assets/$bgImage'),
-                                                fit: BoxFit.scaleDown,
-                                                width: 100,
-                                                alignment: Alignment.center),
-                                            title: const Text(
-                                              'Apiary',
-                                              style: TextStyle(fontSize: 30),
-                                            ),
-                                            subtitle: Text(
-                                              _apiaryList[index].id,
-                                              style: const TextStyle(
-                                                  fontSize: 14.0),
-                                            ),
-                                          ),
-                                          Center(
-                                            child: Container(
-                                              margin: const EdgeInsets.all(5.0),
-                                              color: const Color.fromARGB(
-                                                  255, 226, 233, 226),
-                                              width: MediaQuery.of(context)
-                                                      .size
-                                                      .width -
-                                                  50,
-                                              height: 18,
-                                              child: Text(
-                                                "Location: ${_apiaryList[index].location}",
-                                                textAlign: TextAlign.center,
-                                                overflow: TextOverflow.ellipsis,
-                                                style: const TextStyle(
-                                                    fontWeight: FontWeight.bold,
-                                                    fontSize: 16),
-                                              ),
-                                            ),
-                                          ),
-                                          ButtonBar(
-                                            alignment: MainAxisAlignment.center,
-                                            children: <Widget>[
-                                              ElevatedButton.icon(
-                                                onPressed: () => {
-                                                  showDetails(
-                                                      _apiaryList[index])
-                                                },
-                                                icon: const Icon(Icons.zoom_in),
-                                                label: const Text('Details'),
-                                                style: ElevatedButton.styleFrom(
-                                                    elevation: 5,
-                                                    minimumSize:
-                                                        const Size(100, 35),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10.0)),
-                                                    onPrimary: Colors.white,
-                                                    primary: Colors.green),
-                                              ),
-                                              ElevatedButton.icon(
-                                                onPressed: () => {
-                                                  userdata.write(
-                                                      'apiaryIDtoget',
-                                                      _apiaryList[index].id),
-                                                  userdata.write(
-                                                      'address',
-                                                      _apiaryList[index]
-                                                          .address),
-                                                  userdata.write(
-                                                      'location',
-                                                      _apiaryList[index]
-                                                          .location),
-                                                  userdata.write(
-                                                      'observations',
-                                                      _apiaryList[index]
-                                                          .observations),
-                                                  Navigator.of(context)
-                                                      .pushReplacement(
-                                                          MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        const HivesList(),
-                                                  )),
-                                                },
-                                                icon: const Icon(Icons.zoom_in),
-                                                label: const Text('Hives'),
-                                                style: ElevatedButton.styleFrom(
-                                                    elevation: 5,
-                                                    minimumSize:
-                                                        const Size(100, 35),
-                                                    shape:
-                                                        RoundedRectangleBorder(
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        10.0)),
-                                                    onPrimary: Colors.white,
-                                                    primary:
-                                                        const Color.fromARGB(
-                                                            255, 9, 106, 197)),
-                                              ),
-                                            ],
-                                          )
-                                        ]),
-                                  );
-                                }))),
-                      ]),
-                ),
-        )),
-      ));
-  //floatingActionButton: buildAddOfferButton(context)));
+                )),
+          )));
 }
 
 Widget buildAddOfferButton(BuildContext context) => FloatingActionButton(
