@@ -13,8 +13,8 @@
 13         to allow setting breakpoints, to provide hot reload, etc.
 14    -->
 15    <uses-permission android:name="android.permission.INTERNET" />
-15-->C:\Users\duart\Desktop\bhivesensemobile\android\app\src\debug\AndroidManifest.xml:7:5-66
-15-->C:\Users\duart\Desktop\bhivesensemobile\android\app\src\debug\AndroidManifest.xml:7:22-64
+15-->C:\Users\duart\OneDrive - PGA\Ambiente de Trabalho\bhivesensemobile_main\bhivesensemobile\android\app\src\debug\AndroidManifest.xml:7:5-66
+15-->C:\Users\duart\OneDrive - PGA\Ambiente de Trabalho\bhivesensemobile_main\bhivesensemobile\android\app\src\debug\AndroidManifest.xml:7:22-64
 16    <!-- Create a unique permission for your app and use it so only your app can receive your OneSignal messages. -->
 17    <permission
 17-->[com.onesignal:OneSignal:4.8.5] C:\Users\duart\.gradle\caches\transforms-3\71a7f5b365fdc57e5d7d1ff07dfc554b\transformed\jetified-OneSignal-4.8.5\AndroidManifest.xml:7:5-9:47
