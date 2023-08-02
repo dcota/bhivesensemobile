@@ -53,8 +53,8 @@ class _HiveDetailState extends State<HiveDetails> {
       builder: (BuildContext context) => AlertDialog(
         title: const Text('WARNING'),
         content: const SingleChildScrollView(
-          child: ListBody(children: const <Widget>[
-            const Text('No data for this hive!'),
+          child: ListBody(children: <Widget>[
+            Text('No data for this hive!'),
           ]),
         ),
         actions: <Widget>[
