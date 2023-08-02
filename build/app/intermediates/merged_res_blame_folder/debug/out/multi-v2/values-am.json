@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "C:\\Users\\duart\\OneDrive - PGA\\Ambiente de Trabalho\\bhivesensemobile_main\\bhivesensemobile\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
+            "outputFile": "C:\\Users\\duart\\Desktop\\bhivesensemobile\\build\\app\\intermediates\\incremental\\mergeDebugResources\\merged.dir\\values-am\\values-am.xml",
             "map": [
                 {
                     "source": "C:\\Users\\duart\\.gradle\\caches\\transforms-3\\2efeb32dcb56b0d2799ab543d25b1181\\transformed\\browser-1.3.0\\res\\values-am\\values-am.xml",
